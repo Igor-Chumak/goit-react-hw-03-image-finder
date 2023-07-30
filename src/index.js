@@ -4,6 +4,7 @@ import 'modern-normalize';
 // import { ThemeProvider } from 'styled-components';
 import { App } from 'components';
 // import './index.css';
+import './styles/styles.css';
 // import { GlobalStyles, theme } from 'styles';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
