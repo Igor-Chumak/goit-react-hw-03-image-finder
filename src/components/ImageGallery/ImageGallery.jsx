@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ContactItems } from 'components';
-import { ContactListBox } from './ContactList.styled';
+import { ContactListBox } from './ImageGallery.styled';
 
 export class ContactList extends Component {
   static propTypes = {

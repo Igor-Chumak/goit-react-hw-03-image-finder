@@ -5,7 +5,7 @@ import {
   ContactFormLabel,
   ContactFormInput,
   ContactFormSubmit,
-} from './ContactForm.styled';
+} from './Modal.styled';
 
 const INITIAL_STATE = {
   name: '',
