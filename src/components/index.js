@@ -5,7 +5,7 @@ export * from 'components/Section/Section';
 export * from 'components/Container/Container.styled';
 export * from 'components/Notification/Notification';
 export * from 'components/Button/Button.styled';
-export * from 'components/Loader/Loader';
+export * from 'components/Utility/api';
 export * from 'components/Modal/Modal';
 export * from 'components/ImageGallery/ImageGallery';
 export * from 'components/ImageGalleryItem/ImageGalleryItem';
