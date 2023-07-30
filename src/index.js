@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'modern-normalize';
+// import 'modern-normalize';
 // import { ThemeProvider } from 'styled-components';
 import { App } from 'components';
 // import './index.css';
