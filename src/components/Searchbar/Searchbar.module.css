@@ -38,7 +38,8 @@
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  background-image: url(https://cdn-icons-png.flaticon.com/512/116/116836.png?w=740&t=st=1690054407~exp=1690055007~hmac=ca3b830ab158e546b48c308c44aba6a9d6e5e16495a7e67bc27c8e3e47b89776);
+  /* background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg'); */
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -52,7 +53,7 @@
   opacity: 1;
 }
 
-.SearchFormButtonLabel {
+.SearchFormButton_label {
   position: absolute;
   width: 1px;
   height: 1px;

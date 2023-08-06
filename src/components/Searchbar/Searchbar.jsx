@@ -7,6 +7,10 @@ export class Searchbar extends Component {
     onSubmit: PropTypes.func.isRequired,
   };
 
+  state = {
+    inputValue: '',
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     // const form = e.currentTarget;
@@ -39,7 +43,7 @@ export class Searchbar extends Component {
       <header className={css.Searchbar}>
         <form className={css.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={css.SearchFormButton}>
-            <span className={css.SearchFormButtonLabel}>Search</span>
+            <span className={css.SearchFormButton_label}>Search</span>
           </button>
           <input
             className={css.SearchFormInput}
