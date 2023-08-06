@@ -2,7 +2,7 @@ import { Component } from 'react';
 // import { nanoid } from 'nanoid';
 // import { Vortex } from 'react-loader-spinner';
 
-import { ImageGallery, Searchbar } from 'components';
+import { Button, ImageGallery, Searchbar } from 'components';
 
 export class App extends Component {
   state = {
@@ -49,17 +49,6 @@ export class App extends Component {
   //   });
   // };
 
-  // formatDataState = dataForm => {
-  //   Object.keys(dataForm).map(i => (dataForm[i] = dataForm[i].trim()));
-  // };
-
-  // searchContact = ({ name }) => {
-  //   const { contacts } = this.state;
-  //   return contacts.find(
-  //     contact => contact.name.toLowerCase() === name.toLowerCase()
-  //   );
-  // };
-
   // handleChangeInputFilter = e => {
   //   const inputFilter = document.getElementById('filter');
   //   const { value } = e.target;
@@ -70,24 +59,13 @@ export class App extends Component {
   //   });
   // };
 
-  // createContactsToList = () => {
-  //   return this.state.contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(this.state.filter)
-  //   );
-  // };
-
-  // deleteContactsFromList = idItem => {
-  //   return this.setState(prevValue => ({
-  //     contacts: prevValue.contacts.filter(item => item.id !== idItem),
-  //   }));
-  // };
-
   render() {
     return (
       <>
         <Searchbar onSubmit={this.onSubmit} />
         <main>
           <ImageGallery />
+          <Button />
         </main>
       </>
     );
