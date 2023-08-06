@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import { Vortex } from 'react-loader-spinner';
 
@@ -15,7 +14,6 @@ export class App extends Component {
     showModal: false,
     showLoader: false,
     showLoadMore: false,
-    modeTheme: 'light',
   };
 
   handleToggleTheme = () => {
@@ -87,40 +85,12 @@ export class App extends Component {
 
   render() {
     return (
-      <ThemeProvider
-        theme={{
-          ...theme,
-          ...(this.state.modeTheme === 'light' ? lightTheme : darkTheme),
-        }}
-      >
-        <GlobalStyles />
-        <Header>
-          <Searchbar onSubmit={this.onSubmit} />
-          <CreateThemeSwitcher
-            handleToggleTheme={this.handleToggleTheme}
-            modeTheme={this.state.modeTheme === 'light' ? false : true}
-          />
-        </Header>
+      <>
+        <Searchbar onSubmit={this.onSubmit} />
         <main>
-          <Section>
-            <ImageGallery />
-            {/* {this.state.notification && (
-              <Notification message={this.state.notification}>
-                <OkButton type="button" onClick={this.handleOkButton}>
-                  OK
-                </OkButton>
-              </Notification>
-            )} */}
-          </Section>
-          {/* <Section title="Contacts">
-            <Filter handleChangeInputFilter={this.handleChangeInputFilter} />
-            <ContactList
-              contactsToList={this.createContactsToList()}
-              deleteContactsFromList={this.deleteContactsFromList}
-            />
-          </Section> */}
+          <ImageGallery />
         </main>
-      </ThemeProvider>
+      </>
     );
   }
 }
