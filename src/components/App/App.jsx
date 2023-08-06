@@ -1,9 +1,8 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
-import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
-import { Vortex } from 'react-loader-spinner';
+// import { nanoid } from 'nanoid';
+// import { Vortex } from 'react-loader-spinner';
 
-import { Header, Section, CreateThemeSwitcher, Searchbar } from 'components';
+import { ImageGallery, Searchbar } from 'components';
 
 export class App extends Component {
   state = {

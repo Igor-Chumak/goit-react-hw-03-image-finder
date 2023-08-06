@@ -1,32 +1,11 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
-import { ContactItems } from 'components';
-import {} from './ImageGallery.styled';
+// import PropTypes from 'prop-types';
+import { ImageGalleryItem } from 'components';
+import css from './ImageGallery.module.css';
 
-export class ImageGallery extends Component {
-  static propTypes = {
-    contactsToList: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-      })
-    ),
-    deleteContactsFromList: PropTypes.func.isRequired,
-  };
-
-  handleDeleteButton = e => {
-    this.props.deleteContactsFromList(e.target.id);
-  };
-
-  render() {
-    const { contactsToList } = this.props;
-    return (
-      <ContactListBox onClick={this.handleDeleteButton}>
-        {contactsToList.map(({ id, name, number }) => (
-          <ContactItems name={name} number={number} id={id} key={id} />
-        ))}
-      </ContactListBox>
-    );
-  }
-}
+export const ImageGallery = () => {
+  return (
+    <ul className={css.ImageGallery}>
+      <ImageGalleryItem />
+    </ul>
+  );
+};
