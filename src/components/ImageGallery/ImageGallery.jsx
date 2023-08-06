@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ContactItems } from 'components';
-import { ContactListBox } from './ImageGallery.styled';
+import {} from './ImageGallery.styled';
 
-export class ContactList extends Component {
+export class ImageGallery extends Component {
   static propTypes = {
     contactsToList: PropTypes.arrayOf(
       PropTypes.shape({

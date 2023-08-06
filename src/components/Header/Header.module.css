@@ -4,13 +4,13 @@ import { Container } from 'components';
 
 export class Header extends Component {
   static propTypes = {
-    children: PropTypes.arrayOf(PropTypes.element),
+    children: PropTypes.element,
   };
 
   render() {
     const { children } = this.props;
     return (
-      <header className="Searchbar">
+      <header>
         <Container>{children}</Container>
       </header>
     );

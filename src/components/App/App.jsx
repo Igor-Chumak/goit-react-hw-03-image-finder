@@ -4,14 +4,18 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, darkTheme, lightTheme, theme } from 'styles';
 import { Vortex } from 'react-loader-spinner';
 
-import { Header, Section, CreateThemeSwitcher } from 'components';
+import { Header, Section, CreateThemeSwitcher, Searchbar } from 'components';
 
 export class App extends Component {
   state = {
-    contacts: [...INITIAL_STATE],
-    filter: '',
+    images: [],
+    searchValue: '',
+    page: 1,
+    toShowLargeImage: '',
+    showModal: false,
+    showLoader: false,
+    showLoadMore: false,
     modeTheme: 'light',
-    notification: '',
   };
 
   handleToggleTheme = () => {
@@ -22,25 +26,25 @@ export class App extends Component {
     });
   };
 
-  // onSubmit = dataForm => {
-  //   this.formatDataState(dataForm);
-  //   if (!dataForm.name) {
-  //     // console.log('dataForm', dataForm);
-  //     return;
-  //   }
-  //   const searchResult = this.searchContact(dataForm);
-  //   if (!searchResult) {
-  //     this.setState(prevState => ({
-  //       contacts: [...prevState.contacts, { id: nanoid(), ...dataForm }],
-  //     }));
-  //     return true;
-  //   } else {
-  //     this.setState({
-  //       notification: `${searchResult.name} : ${searchResult.number} is already in contacts`,
-  //     });
-  //     return false;
-  //   }
-  // };
+  onSubmit = dataForm => {
+    // this.formatDataState(dataForm);
+    // if (!dataForm.name) {
+    //   // console.log('dataForm', dataForm);
+    //   return;
+    // }
+    // const searchResult = this.searchContact(dataForm);
+    // if (!searchResult) {
+    //   this.setState(prevState => ({
+    //     contacts: [...prevState.contacts, { id: nanoid(), ...dataForm }],
+    //   }));
+    //   return true;
+    // } else {
+    //   this.setState({
+    //     notification: `${searchResult.name} : ${searchResult.number} is already in contacts`,
+    //   });
+    //   return false;
+    // }
+  };
 
   // handleOkButton = () => {
   //   this.setState({
@@ -91,29 +95,30 @@ export class App extends Component {
       >
         <GlobalStyles />
         <Header>
+          <Searchbar onSubmit={this.onSubmit} />
           <CreateThemeSwitcher
             handleToggleTheme={this.handleToggleTheme}
             modeTheme={this.state.modeTheme === 'light' ? false : true}
           />
         </Header>
         <main>
-          <Section title="Phonebook">
-            <ContactForm onSubmit={this.onSubmit} />
-            {this.state.notification && (
+          <Section>
+            <ImageGallery />
+            {/* {this.state.notification && (
               <Notification message={this.state.notification}>
                 <OkButton type="button" onClick={this.handleOkButton}>
                   OK
                 </OkButton>
               </Notification>
-            )}
+            )} */}
           </Section>
-          <Section title="Contacts">
+          {/* <Section title="Contacts">
             <Filter handleChangeInputFilter={this.handleChangeInputFilter} />
             <ContactList
               contactsToList={this.createContactsToList()}
               deleteContactsFromList={this.deleteContactsFromList}
             />
-          </Section>
+          </Section> */}
         </main>
       </ThemeProvider>
     );
