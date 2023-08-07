@@ -1,8 +1,7 @@
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
-// import { Vortex } from 'react-loader-spinner';
 
-import { Button, ImageGallery, Searchbar } from 'components';
+import { Button, ImageGallery, Loader, Modal, Searchbar } from 'components';
 
 export class App extends Component {
   state = {
@@ -10,9 +9,9 @@ export class App extends Component {
     searchValue: '',
     page: 1,
     toShowLargeImage: '',
-    showModal: false,
-    showLoader: false,
     showLoadMore: false,
+    showLoader: false,
+    showModal: false,
   };
 
   handleToggleTheme = () => {
@@ -66,6 +65,8 @@ export class App extends Component {
         <main>
           <ImageGallery />
           <Button />
+          <Loader />
+          {this.showModal && <Modal />}
         </main>
       </>
     );
