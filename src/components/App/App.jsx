@@ -65,7 +65,7 @@ export class App extends Component {
         <main>
           <ImageGallery />
           <Button />
-          <Loader />
+          {this.showLoader && <Loader />}
           {this.showModal && <Modal />}
         </main>
       </>
