@@ -2,5 +2,5 @@
     position: fixed;
     top: calc(50% - 40px);
     left: calc(50% - 40px);
-    z-index: 500;
+    z-index: 700;
 }
