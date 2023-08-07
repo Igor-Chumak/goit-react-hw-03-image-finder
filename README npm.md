@@ -2,6 +2,21 @@
 - npm install--save-dev prop-types >>> import PropTypes from 'prop-types';
 - npm install styled-components >>> import styled from 'styled-components';
 - npm npm install --save nanoid >>> import { nanoid } from 'nanoid';
+- npm i notiflix >>> import { Notify } from'notiflix/build/notiflix-notify-aio';
+  <!-- const notifyWarning = {
+    width: '500px',
+    fontSize: '25px',
+    position: 'center-top',
+    opacity: 0.7,
+    timeout: 1500,
+  }; -->
+  <!-- const notifySuccess = {
+      width: '500px',
+      timeout: '5000',
+      fontSize: '25px',
+      position: 'center-top',
+      opacity: 0.7,
+  }; -->
 - npm install axios >>> import axios from "axios";
 - npm install react-loader-spinner --save >>> import { Vortex } from
   'react-loader-spinner';

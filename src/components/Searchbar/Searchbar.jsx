@@ -13,29 +13,35 @@ export class Searchbar extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // if (this.state.name === '' || this.state.value === '') {
-    //   return;
-    // }
-    // if (
-    //   !this.props.onSubmit({
-    //     name: this.state.name.trim(),
-    //     number: this.state.number,
-    //   })
-    // ) {
-    //   let valueTrim = e.currentTarget.name.value.trim();
-    //   e.currentTarget.name.value = valueTrim;
-    //   return;
-    // }
-    // form.reset();
-    // this.resetState();
+    const form = e.currentTarget;
+    if (this.state.name === '' || this.state.value === '') {
+      return;
+    }
+    if (
+      !this.props.onSubmit({
+        name: this.state.name.trim(),
+        number: this.state.number,
+      })
+    ) {
+      let valueTrim = e.currentTarget.name.value.trim();
+      e.currentTarget.name.value = valueTrim;
+      return;
+    }
+    form.reset();
+    this.serState({ inputValue: '' });
   };
 
+  //     const { inputValue } = this.state;
+  //   const { setAppState } = this.props;
+  //   evt.preventDefault();
+  //   if (inputValue === '' || inputValue === this.props.searchValue) {
+  //     return;
+  //   }
+  //   setAppState(inputValue.trim().toLowerCase());
+  // };
+
   handleChangeInput = e => {
-    const { name, value } = e.target;
-    this.setState({
-      [name]: value,
-    });
+    return this.setState({ inputValue: e.target.value });
   };
 
   render() {
