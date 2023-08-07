@@ -14,31 +14,30 @@ export class Searchbar extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (this.state.name === '' || this.state.value === '') {
-      return;
-    }
+    const { inputValue } = this.state;
+    //   const { setAppState } = this.props;
+    //   if (inputValue === '' || inputValue === this.props.searchValue) {
+    //     return;
+    //   }
+    //   setAppState(inputValue.trim().toLowerCase());
+    // };
+
+    // if (this.state.inputValue === '') {
+    //         return;
+    // }
+    let inputValueNormalize = inputValue.trim().toLowerCase();
+    e.currentTarget.search.value = inputValueNormalize;
     if (
-      !this.props.onSubmit({
-        name: this.state.name.trim(),
-        number: this.state.number,
-      })
+      // !this.props.onSubmit({
+      //   inputValue: inputValueNormalize,
+      // })
+      !this.props.onSubmit(inputValueNormalize)
     ) {
-      let valueTrim = e.currentTarget.name.value.trim();
-      e.currentTarget.name.value = valueTrim;
       return;
     }
     form.reset();
-    this.serState({ inputValue: '' });
+    this.setState({ inputValue: '' });
   };
-
-  //     const { inputValue } = this.state;
-  //   const { setAppState } = this.props;
-  //   evt.preventDefault();
-  //   if (inputValue === '' || inputValue === this.props.searchValue) {
-  //     return;
-  //   }
-  //   setAppState(inputValue.trim().toLowerCase());
-  // };
 
   handleChangeInput = e => {
     return this.setState({ inputValue: e.target.value });
@@ -53,6 +52,7 @@ export class Searchbar extends Component {
           </button>
           <input
             className={css.SearchFormInput}
+            name="search"
             type="text"
             autoComplete="off"
             autoFocus
