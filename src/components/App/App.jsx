@@ -47,23 +47,21 @@ export class App extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const { searchValue, page } = this.state;
     if (prevState.page !== page || prevState.searchValue !== searchValue) {
-      if (searchValue) {
-        try {
-          this.setState({ showLoader: true });
-          const dataSearchResults = await getDataQuery(searchValue, page);
-          if (dataSearchResults.length === 0) {
-            throw new Error('Sorry, no results found !');
-          }
-          this.setState({
-            images: [...this.state.images, ...dataSearchResults],
-            showLoadMore: dataSearchResults.length === 12,
-          });
-        } catch (error) {
-          this.setState({ showLoadMore: false });
-          Notify.warning(error.message);
-        } finally {
-          this.setState({ showLoader: false });
+      try {
+        this.setState({ showLoader: true });
+        const dataSearchResults = await getDataQuery(searchValue, page);
+        if (dataSearchResults.length === 0) {
+          throw new Error('Sorry, no results found !');
         }
+        this.setState({
+          images: [...this.state.images, ...dataSearchResults],
+          showLoadMore: dataSearchResults.length === 12,
+        });
+      } catch (error) {
+        this.setState({ showLoadMore: false });
+        Notify.warning(error.message);
+      } finally {
+        this.setState({ showLoader: false });
       }
     }
   }

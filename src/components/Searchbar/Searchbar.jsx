@@ -15,24 +15,10 @@ export class Searchbar extends Component {
     e.preventDefault();
     const form = e.currentTarget;
     const { inputValue } = this.state;
-    //   const { setAppState } = this.props;
-    //   if (inputValue === '' || inputValue === this.props.searchValue) {
-    //     return;
-    //   }
-    //   setAppState(inputValue.trim().toLowerCase());
-    // };
-
-    // if (this.state.inputValue === '') {
-    //         return;
-    // }
     let inputValueNormalize = inputValue.trim().toLowerCase();
-    e.currentTarget.search.value = inputValueNormalize;
-    if (
-      // !this.props.onSubmit({
-      //   inputValue: inputValueNormalize,
-      // })
-      !this.props.onSubmit(inputValueNormalize)
-    ) {
+    if (!inputValueNormalize) return;
+    // e.currentTarget.search.value = inputValueNormalize;
+    if (!this.props.onSubmit(inputValueNormalize)) {
       return;
     }
     form.reset();
@@ -58,6 +44,7 @@ export class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
             onChange={this.handleChangeInput}
+            required
           />
         </form>
       </header>

@@ -22,7 +22,7 @@ ImageGallery.propTypes = {
   showLargeImage: PropTypes.func.isRequired,
   imagesList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       webformatURL: PropTypes.string,
       largeImageURL: PropTypes.string,
     })
