@@ -61,10 +61,10 @@ export class App extends Component {
         try {
           this.setState({ showLoader: true });
           //
-          console.error('query :>> ', searchValue, 'page:>> ', page);
+          // console.error('query :>> ', searchValue, 'page:>> ', page);
           //
           const dataSearchResults = await getDataQuery(searchValue, page);
-          console.log('dataSearchResults :>> ', dataSearchResults);
+          // console.log('dataSearchResults :>> ', dataSearchResults);
           if (dataSearchResults.length === 0) {
             throw new Error('Sorry, no results found !');
           }
@@ -112,15 +112,36 @@ export class App extends Component {
     }));
   };
 
+  handleShowLargeImage = largeImageURL => {
+    this.setState({
+      showLargeImage: largeImageURL,
+      showModal: true,
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
+  };
+
   render() {
+    const { images, showLoadMore, showLoader, showModal, showLargeImage } =
+      this.state;
     return (
       <>
         <Searchbar onSubmit={this.onSubmit} />
         <main>
-          <ImageGallery imagesList={this.state.images} />
-          {this.state.showLoadMore && <Button click={this.handleLoadMore} />}
-          {this.state.showLoader && <Loader />}
-          {this.state.showModal && <Modal />}
+          <ImageGallery
+            imagesList={images}
+            showLargeImage={this.handleShowLargeImage}
+          />
+          {showLoadMore && <Button click={this.handleLoadMore} />}
+          {showLoader && <Loader />}
+          {showModal && (
+            <Modal
+              largeImageURL={showLargeImage}
+              handleCloseModal={this.handleCloseModal}
+            />
+          )}
         </main>
       </>
     );
