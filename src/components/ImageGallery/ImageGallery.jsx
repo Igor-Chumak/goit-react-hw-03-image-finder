@@ -19,5 +19,12 @@ export const ImageGallery = ({ imagesList, showLargeImage }) => {
 };
 
 ImageGallery.propTypes = {
-  imagesList: PropTypes.arrayOf(PropTypes.object),
+  showLargeImage: PropTypes.func.isRequired,
+  imagesList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string,
+      largeImageURL: PropTypes.string,
+    })
+  ),
 };

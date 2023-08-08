@@ -1,8 +1,12 @@
 import { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './Modal.module.css';
 
 export class Modal extends Component {
+  static propTypes = {
+    handleCloseModal: PropTypes.func.isRequired,
+  };
+
   onClickOverlay = e => {
     if (e.target === e.currentTarget) {
       this.props.handleCloseModal();

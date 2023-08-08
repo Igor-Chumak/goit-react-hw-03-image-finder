@@ -38,7 +38,7 @@ const INIT_STATE = {
   showLargeImage: '',
   showLoadMore: false,
   showLoader: false,
-  showModal: false,
+  // showModal: false,
 };
 
 export class App extends Component {
@@ -79,7 +79,6 @@ export class App extends Component {
       toShowLargeImage: '',
       showLoadMore: false,
       showLoader: false,
-      showModal: false,
     });
   };
 
@@ -92,17 +91,15 @@ export class App extends Component {
   handleShowLargeImage = largeImageURL => {
     this.setState({
       showLargeImage: largeImageURL,
-      showModal: true,
     });
   };
 
   handleCloseModal = () => {
-    this.setState({ showModal: false });
+    this.setState({ showLargeImage: '' });
   };
 
   render() {
-    const { images, showLoadMore, showLoader, showModal, showLargeImage } =
-      this.state;
+    const { images, showLoadMore, showLoader, showLargeImage } = this.state;
     return (
       <>
         <Searchbar onSubmit={this.onSubmit} />
@@ -113,7 +110,7 @@ export class App extends Component {
           />
           {showLoadMore && <Button click={this.handleLoadMore} />}
           {showLoader && <Loader />}
-          {showModal && (
+          {showLargeImage && (
             <Modal
               largeImageURL={showLargeImage}
               handleCloseModal={this.handleCloseModal}
