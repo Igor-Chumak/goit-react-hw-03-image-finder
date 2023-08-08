@@ -46,25 +46,11 @@ export class App extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     const { searchValue, page } = this.state;
-    //
-    // console.log('did update :>> ');
-    // console.log('prevState.page :>> ', prevState.page, 'page :>> ', page);
-    // console.log(
-    //   'prevState.searchValue :>> ',
-    //   prevState.searchValue,
-    //   'searchValue :>> ',
-    //   searchValue
-    // );
-    //
     if (prevState.page !== page || prevState.searchValue !== searchValue) {
       if (searchValue) {
         try {
           this.setState({ showLoader: true });
-          //
-          // console.error('query :>> ', searchValue, 'page:>> ', page);
-          //
           const dataSearchResults = await getDataQuery(searchValue, page);
-          // console.log('dataSearchResults :>> ', dataSearchResults);
           if (dataSearchResults.length === 0) {
             throw new Error('Sorry, no results found !');
           }
@@ -76,7 +62,6 @@ export class App extends Component {
           this.setState({ showLoadMore: false });
           Notify.warning(error.message);
         } finally {
-          // console.log('finally :>> ');
           this.setState({ showLoader: false });
         }
       }
@@ -84,17 +69,9 @@ export class App extends Component {
   }
 
   onSubmit = dataForm => {
-    // console.log('dataForm in:>> ', dataForm);
-    // if (!dataForm) {
-    //   console.log('image should be reset', dataForm);
-    //   this.setState({ ...INIT_STATE });
-    //   return;
-    // }
     if (dataForm === this.state.searchValue) {
-      // console.log('repeat request: ', dataForm);
       return;
     }
-    // console.log('dataForm Out:>> ', dataForm);
     this.setState({
       images: [],
       searchValue: dataForm,
