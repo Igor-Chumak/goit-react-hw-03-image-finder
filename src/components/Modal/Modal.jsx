@@ -4,6 +4,7 @@ import css from './Modal.module.css';
 
 export class Modal extends Component {
   static propTypes = {
+    largeImageURL: PropTypes.string,
     handleCloseModal: PropTypes.func.isRequired,
   };
 

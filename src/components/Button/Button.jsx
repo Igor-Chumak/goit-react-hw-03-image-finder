@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './Button.module.css';
 
 export const Button = ({ click }) => {
@@ -6,4 +7,8 @@ export const Button = ({ click }) => {
       Load more
     </button>
   );
+};
+
+Button.propTypes = {
+  click: PropTypes.func.isRequired,
 };
