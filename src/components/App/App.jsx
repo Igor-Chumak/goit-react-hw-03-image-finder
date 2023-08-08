@@ -46,6 +46,7 @@ export class App extends Component {
 
   async componentDidUpdate(prevProps, prevState) {
     const { searchValue, page } = this.state;
+    //
     console.log('did update :>> ');
     // console.log('prevState.page :>> ', prevState.page, 'page :>> ', page);
     // console.log(
@@ -54,10 +55,13 @@ export class App extends Component {
     //   'searchValue :>> ',
     //   searchValue
     // );
+    //
     if (prevState.page !== page || prevState.searchValue !== searchValue) {
       try {
         this.setState({ showLoader: true });
+        //
         console.log('query :>> ', searchValue, 'page:>> ', page);
+        //
         const dataSearchResults = await getDataQuery(searchValue, page);
         console.log('dataSearchResults :>> ', dataSearchResults);
         if (dataSearchResults.length === 0) {
@@ -100,13 +104,20 @@ export class App extends Component {
     });
   };
 
+  handleLoadMore = () => {
+    console.log('click Load More :>> ');
+    // this.setState(prev => ({
+    //   page: prev.state.page + 1,
+    // }));
+  };
+
   render() {
     return (
       <>
         <Searchbar onSubmit={this.onSubmit} />
         <main>
           <ImageGallery imagesList={this.state.images} />
-          {this.state.showLoadMore && <Button />}
+          {this.state.showLoadMore && <Button onClick={this.handleLoadMore} />}
           {this.state.showLoader && <Loader />}
           {this.state.showModal && <Modal />}
         </main>
