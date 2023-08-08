@@ -35,7 +35,7 @@ const INIT_STATE = {
   images: [],
   searchValue: '',
   page: 1,
-  toShowLargeImage: '',
+  showLargeImage: '',
   showLoadMore: false,
   showLoader: false,
   showModal: false,
@@ -47,7 +47,7 @@ export class App extends Component {
   async componentDidUpdate(prevProps, prevState) {
     const { searchValue, page } = this.state;
     //
-    console.log('did update :>> ');
+    // console.log('did update :>> ');
     // console.log('prevState.page :>> ', prevState.page, 'page :>> ', page);
     // console.log(
     //   'prevState.searchValue :>> ',
@@ -57,26 +57,28 @@ export class App extends Component {
     // );
     //
     if (prevState.page !== page || prevState.searchValue !== searchValue) {
-      try {
-        this.setState({ showLoader: true });
-        //
-        console.log('query :>> ', searchValue, 'page:>> ', page);
-        //
-        const dataSearchResults = await getDataQuery(searchValue, page);
-        console.log('dataSearchResults :>> ', dataSearchResults);
-        if (dataSearchResults.length === 0) {
-          throw new Error('Sorry, no results found !');
+      if (searchValue) {
+        try {
+          this.setState({ showLoader: true });
+          //
+          console.error('query :>> ', searchValue, 'page:>> ', page);
+          //
+          const dataSearchResults = await getDataQuery(searchValue, page);
+          console.log('dataSearchResults :>> ', dataSearchResults);
+          if (dataSearchResults.length === 0) {
+            throw new Error('Sorry, no results found !');
+          }
+          this.setState({
+            images: [...this.state.images, ...dataSearchResults],
+            showLoadMore: dataSearchResults.length === 12,
+          });
+        } catch (error) {
+          this.setState({ showLoadMore: false });
+          Notify.warning(error.message);
+        } finally {
+          // console.log('finally :>> ');
+          this.setState({ showLoader: false });
         }
-        this.setState({
-          images: [...this.state.images, ...dataSearchResults],
-          showLoadMore: dataSearchResults.length === 12,
-        });
-      } catch (error) {
-        this.setState({ showLoadMore: false });
-        Notify.warning(error.message);
-      } finally {
-        console.log('finally :>> ');
-        this.setState({ showLoader: false });
       }
     }
   }
@@ -89,10 +91,10 @@ export class App extends Component {
     //   return;
     // }
     if (dataForm === this.state.searchValue) {
-      console.log('repeat request: ', dataForm);
+      // console.log('repeat request: ', dataForm);
       return;
     }
-    console.log('dataForm Out:>> ', dataForm);
+    // console.log('dataForm Out:>> ', dataForm);
     this.setState({
       images: [],
       searchValue: dataForm,
@@ -105,10 +107,9 @@ export class App extends Component {
   };
 
   handleLoadMore = () => {
-    console.log('click Load More :>> ');
-    // this.setState(prev => ({
-    //   page: prev.state.page + 1,
-    // }));
+    this.setState(prev => ({
+      page: prev.page + 1,
+    }));
   };
 
   render() {
@@ -117,7 +118,7 @@ export class App extends Component {
         <Searchbar onSubmit={this.onSubmit} />
         <main>
           <ImageGallery imagesList={this.state.images} />
-          {this.state.showLoadMore && <Button onClick={this.handleLoadMore} />}
+          {this.state.showLoadMore && <Button click={this.handleLoadMore} />}
           {this.state.showLoader && <Loader />}
           {this.state.showModal && <Modal />}
         </main>
