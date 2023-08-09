@@ -44,7 +44,7 @@ const INIT_STATE = {
 export class App extends Component {
   state = { ...INIT_STATE };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_, prevState) {
     const { searchValue, page } = this.state;
     if (prevState.page !== page || prevState.searchValue !== searchValue) {
       try {
